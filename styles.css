@@ -503,3 +503,184 @@ body {
         height: 80px;
     }
 }
+/* Ilustración de REPOX y fondo animado */
+.project-art { height: 193px; position: relative; display: grid; place-items: center; margin: 6px 0 14px; }
+.orbit { position: absolute; width: 240px; height: 150px; border: 1px solid #818cf12b; border-radius: 50%; transform: rotate(-22deg); }
+.orbit-two { width: 190px; height: 190px; border-style: dashed; border-color: #67e8f918; transform: rotate(22deg); }
+.orbit-core { width: 96px; height: 96px; display: grid; place-items: center; font-size: 38px; border-radius: 27px; color: #d7deff; background: linear-gradient(145deg, #4f46e56b, #172940); border: 1px solid #818cf178; box-shadow: 0 0 55px #6366f123, inset 0 1px 0 #ffffff24; transform: rotate(-8deg); }
+.orbit-core i { transform: rotate(8deg); }
+.orbit-node { position: absolute; width: 37px; height: 37px; border-radius: 11px; display: grid; place-items: center; border: 1px solid #818cf13b; background: #171f38; font-size: 13px; }
+.node-code { left: calc(50% - 128px); top: 69px; color: #a5b4fc; transform: rotate(-10deg); }
+.node-game { left: calc(50% + 66px); top: 21px; color: #c4b5fd; transform: rotate(12deg); }
+.node-tool { left: calc(50% + 77px); bottom: 36px; color: #67e8f9; transform: rotate(8deg); }
+.art-label { position: absolute; bottom: -4px; font: 8px var(--mono); letter-spacing: 2px; color: #929eba; }
+.project-badge { font: 9px var(--mono); padding: 4px 8px; background: #6366f112; color: #b7bef6; border: 1px solid #6366f12f; border-radius: 5px; }
+
+html, body { height: auto; min-height: 100%; overflow: visible; }
+body { min-height: 100vh; min-height: 100svh; padding: 32px 20px; }
+.profile-container { margin: auto; }
+.profile-card:hover { transform: none; }
+.username-container { align-items: center; gap: 6px; }
+.verified-badge { display: inline-flex; width: 22px; height: 22px; color: #3897f0; flex-shrink: 0; }
+.verified-badge svg { width: 100%; height: 100%; }
+a:focus-visible { outline: 2px solid #67e8f9; outline-offset: 5px; }
+.repox-showcase { margin-top: 16px; padding: 12px 28px 20px; border-radius: 24px; background: radial-gradient(ellipse at 55% 40%, #6366f11a, transparent 75%); }
+.repox-showcase .project-art { margin: 0 0 17px; height: 180px; }
+.showcase-heading { display: flex; align-items: center; gap: 14px; }
+.showcase-heading h2 { font-family: var(--font-heading); font-size: 36px; letter-spacing: -1.5px; margin: 0; }
+.showcase-heading h2 span { color: #818cf8; }
+.project-badge { font-family: monospace; }
+.art-label { font-family: monospace; }
+.moving-grid { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.moving-grid::before { content: ''; position: absolute; inset: -60px; background-image: radial-gradient(#818cf129 1px, transparent 1px); background-size: 36px 36px; animation: gridDrift 24s linear infinite; opacity: .45; }
+.bg-glow { z-index: 0; animation: ambientFloat 16s ease-in-out infinite alternate; }
+.bg-glow-1 { width: min(70vw, 450px); height: min(70vw, 450px); left: 5%; top: 10%; }
+.bg-glow-2 { width: min(70vw, 500px); height: min(70vw, 500px); right: 5%; bottom: 5%; animation-delay: -8s; background: radial-gradient(circle, #06b6d4, #6366f1); }
+.orbit-core { animation: cloudFloat 6s ease-in-out infinite; }
+.orbit-node { animation: nodeFloat 7s ease-in-out infinite; }
+.node-code { animation-delay: -2s; }
+.node-game { animation-delay: -4s; }
+@keyframes gridDrift { to { transform: translate(36px, 36px); } }
+@keyframes ambientFloat { from { transform: translate(-20px, -20px) scale(.95); } to { transform: translate(35px, 35px) scale(1.15); } }
+@keyframes cloudFloat { 0%, 100% { transform: translateY(0) rotate(-8deg); } 50% { transform: translateY(-7px) rotate(-4deg); } }
+@keyframes nodeFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+@media (max-width: 540px) {
+    body { padding: 24px 16px; }
+    .repox-showcase { padding: 10px 16px 16px; }
+    .profile-header { gap: 12px; }
+    .avatar-container { width: 80px; height: 80px; }
+    .divider { margin: 20px 0; }
+    .showcase-heading h2 { font-size: 32px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* Acceso directo a REPOX dentro de la tarjeta compacta. */
+.repox-access { gap: 18px; }
+.showcase-heading { flex-wrap: wrap; gap: 12px; }
+@media (max-width: 540px) {
+    .repox-access { gap: 16px; }
+    .showcase-heading { justify-content: center; }
+}
+
+.repox-entry { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 8px 0; border-radius: 12px; text-decoration: none; transition: background .25s ease; }
+.repox-entry .showcase-heading { justify-content: center; }
+.entry-hint { display: flex; align-items: center; justify-content: center; gap: 8px; color: #a8b5cc; font-size: 12px; text-align: center; }
+.entry-hint i { font-size: 10px; transition: transform .25s ease; }
+.repox-entry:hover { background: rgba(99, 102, 241, .07); }
+.repox-entry:hover .entry-hint { color: #c7d2fe; }
+.repox-entry:hover .entry-hint i { transform: translateX(3px); }
+@media (prefers-reduced-motion: reduce) { .repox-entry:hover .entry-hint i { transform: none; } }
+.repox-entry:link, .repox-entry:visited { color: #a4b2c9; }
+.repox-entry .showcase-heading h2 { color: #a4b2c9; }
+.repox-entry .showcase-heading h2 span { color: #818cf8; }
+/* Iconos sociales con el acabado luminoso de REPOX. */
+.social-links { gap: 12px; }
+.social-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, .22);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, .2), 0 5px 14px rgba(0, 0, 0, .24);
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.social-icon.discord { background: linear-gradient(135deg, #7165f5, #4f46c7); }
+.social-icon.instagram { background: linear-gradient(135deg, #d64b83, #8b3db5); }
+.social-icon.github { background: linear-gradient(135deg, #455978, #28354e); }
+.social-icon.cloud { background: linear-gradient(135deg, #0284c7, #06b6d4); }
+.social-icon:hover { color: #fff; border-color: rgba(255, 255, 255, .5); transform: translateY(-3px); }
+.social-icon.discord:hover { color: #fff; box-shadow: 0 5px 18px #6366f14d, inset 0 1px 1px #ffffff40; }
+.social-icon.instagram:hover { color: #fff; box-shadow: 0 5px 18px #d64b834d, inset 0 1px 1px #ffffff40; }
+.social-icon.github:hover { color: #fff; box-shadow: 0 5px 18px #607aa64d, inset 0 1px 1px #ffffff40; }
+.social-icon.cloud:hover { color: #fff; box-shadow: 0 5px 18px #06b6d44d, inset 0 1px 1px #ffffff40; }
+@media (prefers-reduced-motion: reduce) { .social-icon { transition: none; } .social-icon:hover { transform: none; } }
+
+/* Indicador de estado sin el icono de reproducción. */
+.online-dot { display: inline-block; width: 8px; height: 8px; flex-shrink: 0; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e66; animation: onlineBlink 2.4s ease-in-out infinite; }
+@keyframes onlineBlink { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+@media (prefers-reduced-motion: reduce) { .online-dot { animation: none; } }
+
+/* El texto del estado se ilumina sin punto adicional. */
+.status-text { animation: onlineTextGlow 2.4s ease-in-out infinite; }
+@keyframes onlineTextGlow {
+    0%, 100% { color: #a7f3d0; text-shadow: none; }
+    50% { color: #d1fae5; text-shadow: 0 0 8px #22c55e99, 0 0 16px #22c55e44; }
+}
+@media (prefers-reduced-motion: reduce) { .status-text { animation: none; } }
+
+/* Texto y círculo comparten color, duración y fase del pulso. */
+.status-text { color: var(--success-green); animation: onlineTextPulse 1.8s infinite ease-in-out; }
+@keyframes onlineTextPulse {
+    0% { opacity: 1; text-shadow: 0 0 8px var(--success-green); }
+    100% { opacity: .45; text-shadow: 0 0 0 transparent; }
+}
+@media (prefers-reduced-motion: reduce) { .status-text { animation: none; opacity: 1; } }
+
+/* Ilustración compacta a la derecha del acceso a REPOX. */
+.repox-entry { flex-direction: row; justify-content: space-between; gap: 10px; padding: 6px 0; }
+.repox-entry-copy { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.repox-entry .project-art { width: 160px; height: 128px; margin: 0; flex-shrink: 0; }
+.repox-entry .orbit { width: 146px; height: 90px; }
+.repox-entry .orbit-two { width: 114px; height: 114px; }
+.repox-entry .orbit-core { width: 65px; height: 65px; border-radius: 20px; font-size: 27px; }
+.repox-entry .orbit-node { width: 26px; height: 26px; border-radius: 8px; font-size: 10px; }
+.repox-entry .node-code { left: 0; top: 55px; }
+.repox-entry .node-game { left: auto; right: 9px; top: 13px; }
+.repox-entry .node-tool { left: auto; right: 5px; bottom: 15px; }
+.repox-entry .entry-hint { max-width: 220px; font-size: 11px; }
+@media (max-width: 540px) {
+    .repox-entry .project-art { width: 120px; height: 112px; }
+    .repox-entry .orbit { width: 116px; height: 75px; }
+    .repox-entry .orbit-two { width: 96px; height: 96px; }
+    .repox-entry .orbit-core { width: 54px; height: 54px; border-radius: 16px; font-size: 23px; }
+    .repox-entry .orbit-node { width: 22px; height: 22px; font-size: 9px; }
+    .repox-entry .node-code { top: 49px; }
+    .repox-entry .node-game { right: 0; top: 9px; }
+    .repox-entry .node-tool { right: 0; bottom: 9px; }
+    .repox-entry .entry-hint { font-size: 10px; gap: 5px; }
+}
+@media (max-width: 360px) {
+    .repox-entry { gap: 4px; }
+    .repox-entry .project-art { width: 100px; }
+    .repox-entry .orbit { width: 100px; }
+    .repox-entry .orbit-two { width: 90px; height: 90px; }
+    .repox-entry .showcase-heading h2 { font-size: 27px; }
+}
+
+/* Una tarjeta más ligera sobre una red ambiental en movimiento. */
+#ambient-network { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+.profile-container { max-width: 480px; }
+.profile-card { padding: 25px 28px; border-radius: 24px; }
+.profile-header { gap: 20px; }
+.avatar-container { width: 82px; height: 82px; }
+.divider { margin: 18px 0 12px; }
+.repox-entry { padding: 0; }
+.repox-entry .project-art { height: 106px; }
+.repox-entry .orbit-two { width: 104px; height: 104px; }
+.repox-entry .node-code { top: 43px; }
+.repox-entry .node-game { top: 6px; }
+.repox-entry .node-tool { bottom: 6px; }
+.moving-grid::before { opacity: .18; }
+@media (max-width: 540px) {
+    .profile-card { padding: 20px; }
+    .profile-header { flex-direction: row; text-align: left; gap: 15px; }
+    .avatar-container { width: 65px; height: 65px; }
+    .username-container, .social-links { justify-content: flex-start; }
+    .username { font-size: 23px; }
+    .discriminator { font-size: 13px; }
+    .verified-badge { width: 19px; height: 19px; }
+    .social-links { gap: 9px; margin-top: 5px; }
+    .social-icon { width: 36px; height: 36px; font-size: 17px; border-radius: 11px; }
+    .repox-entry .project-art { height: 106px; }
+}
+@media (max-width: 360px) {
+    .profile-card { padding: 18px 16px; }
+    .profile-header { gap: 11px; }
+    .avatar-container { width: 54px; height: 54px; }
+    .social-links { gap: 7px; }
+    .social-icon { width: 33px; height: 33px; }
+    .username { font-size: 21px; }
+    .discriminator { font-size: 12px; }
+}
